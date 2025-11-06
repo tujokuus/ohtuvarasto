@@ -6,7 +6,7 @@ def alusta_varasto(mehua: Varasto, olutta: Varasto):
     print("Luonnin jälkeen:")
     print(f"Mehuvarasto: {saldo(mehua)}")
     print(f"Olutavarasto: {saldo(olutta)}")
-    return
+
 
 def saldo(juoma: Varasto):
     return juoma.saldo
@@ -61,7 +61,7 @@ def tee_huono():
     print("Varasto(100.0, -50.7)")
     huono = Varasto(100.0, -50.7)
     print(huono)
-    
+
 def tulosta_juoma(juoma: Varasto):
     print(f"{juoma.nimi}varasto: {juoma}")
 
