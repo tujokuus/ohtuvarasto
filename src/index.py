@@ -17,78 +17,68 @@ def getterit(juoma: Varasto):
     print(f"tilavuus = {juoma.saldo}")
     print(f"paljonko_mahtuu = {juoma.paljonko_mahtuu()}")
 
-def lisaa_varastoon(juoma: Varasto, maara):
+def lisaa(juoma: Varasto, maara):
     print(f"Lisätään {maara}")
     juoma.lisaa_varastoon(maara)
     tulosta_juoma(juoma)
 
-def ota_varastosta(juoma: Varasto, maara):
+def ota(juoma: Varasto, maara):
     print(f"Otetaan {maara}")
     juoma.ota_varastosta(maara)
     tulosta_juoma(juoma)
-    
-def tulosta_juoma(juoma):
-    print(print(f"{juoma.nimi}varasto: {juoma}"))
 
-def main():
-    mehua = Varasto(100.0)
-    olutta = Varasto(100.0, 20.2)
-    alusta_varasto(mehua, olutta)
+def juoma1(juoma: Varasto, maara):
+    print(f"{juoma.nimi}varasto {juoma}")
+    if juoma.nimi == "Olut":
+        print("olutta.lisaa_varastoon(1000.0)")
+    else:
+        print("mehua_lisaa_varastoon(-666.0)")
 
-#    mehua, olutta = alusta_varasto()
-#    print("Luonnin jälkeen:")
-#    print(f"Mehuvarasto: {saldo(olutta)}")
-#    print(f"Olutvarasto: {olutta}")
+    lisaa(juoma, maara)
 
-    getterit(olutta)
-#    print("Olut getterit:")
-#    print(f"saldo = {olutta.saldo}")
-#    print(f"tilavuus = {olutta.tilavuus}")
-#    print(f"paljonko_mahtuu = {olutta.paljonko_mahtuu()}")
-    print("Mehu setterit:")
+def saatiin_olutta(juoma: Varasto, maara):
+    tulosta_juoma(juoma)
+    print("olutta.ota_varastosta(1000.0)")
+    saatiin = juoma.ota_varastosta(maara)
+    print(f"saatiin {saatiin}")
+    tulosta_juoma(juoma)
 
-    lisaa_varastoon(mehua, 50.7)
-    
- #   print("Lisätään 50.7")
- #   mehua.lisaa_varastoon(50.7)
- #   print(f"Mehuvarasto: {mehua}")
-    
-    ota_varastosta(mehua, 3.14)
+def saatiin_mehua(juoma: Varasto, maara):
+    tulosta_juoma(juoma)
+    print(f"mehua.ota_varastosta({maara})")
+    saatiin = juoma.ota_varastosta(maara)
+    print(f"saatiin {saatiin}")
+    tulosta_juoma(juoma)
 
- #   print("Otetaan 3.14")
- #   mehua.ota_varastosta(3.14)
- #   print(f"Mehuvarasto: {mehua}")
-
+def tulosta_virhetilanne():
     print("Virhetilanteita:")
     print("Varasto(-100.0);")
+
+def tee_huono():
     huono = Varasto(-100.0)
     print(huono)
 
     print("Varasto(100.0, -50.7)")
     huono = Varasto(100.0, -50.7)
     print(huono)
+    
+def tulosta_juoma(juoma: Varasto):
+    print(f"{juoma.nimi}varasto: {juoma}")
 
-    print(f"Olutvarasto: {olutta}")
-    print("olutta.lisaa_varastoon(1000.0)")
-    olutta.lisaa_varastoon(1000.0)
-    print(f"Olutvarasto: {olutta}")
-
-    print(f"Mehuvarasto: {mehua}")
-    print("mehua.lisaa_varastoon(-666.0)")
-    mehua.lisaa_varastoon(-666.0)
-    print(f"Mehuvarasto: {mehua}")
-
-    print(f"Olutvarasto: {olutta}")
-    print("olutta.ota_varastosta(1000.0)")
-    saatiin = olutta.ota_varastosta(1000.0)
-    print(f"saatiin {saatiin}")
-    print(f"Olutvarasto: {olutta}")
-
-    print(f"Mehuvarasto: {mehua}")
-    print("mehua.otaVarastosta(-32.9)")
-    saatiin = mehua.ota_varastosta(-32.9)
-    print(f"saatiin {saatiin}")
-    print(f"Mehuvarasto: {mehua}")
+def main():
+    mehua = Varasto(100.0)
+    olutta = Varasto(100.0, 20.2)
+    alusta_varasto(mehua, olutta)
+    getterit(olutta)
+    print("Mehu setterit:")
+    lisaa(mehua, 50.7)
+    ota(mehua, 3.14)
+    tulosta_virhetilanne()
+    tee_huono()
+    juoma1(olutta, 1000.0)
+    juoma1(mehua, -666.0)
+    saatiin_olutta(olutta, 1000.0)
+    saatiin_mehua(mehua, -32.9)
 
 if __name__ == "__main__":
     main()
